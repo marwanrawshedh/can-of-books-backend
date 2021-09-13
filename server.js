@@ -13,4 +13,8 @@ let getBook=require('./Schema')
 
 app.get('/books', getBook);
 
+server.get('*', (req, res) => {
+    res.status(404).send('Sorry, page not found');
+  })
+
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
