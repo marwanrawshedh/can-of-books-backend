@@ -1,11 +1,11 @@
 
 const mongoose = require('mongoose');
 
-main().catch(err => console.log(err));
-let BookName
 
-async function main() {
-  await mongoose.connect('mongodb://localhost:27017/book');
+
+
+
+ mongoose.connect(process.env.URL);
   const BookSchema = new mongoose.Schema({
     title: String,
     description: String,
@@ -13,9 +13,9 @@ async function main() {
     email: String,
   })
 
-  BookName = mongoose.model('bookname', BookSchema);
+  let BookName = mongoose.model('bookname', BookSchema);
   // seedData();
-}
+
 
 async function seedData() {
   const almuwatta = new BookName({
@@ -42,20 +42,20 @@ async function seedData() {
   await theRisala.save();
   await alMusnad.save();
 }
-// main()
 
 
-function getBook(req, res) {
+// function getBook(req, res) {
 
-    const frontemail = req.query.frontemail;
+//     const frontemail = req.query.frontemail;
    
-    BookName.find({ email: frontemail }, (err, result) => {
-      if (err) {
-        console.log(err);
-      }
-      else {
-        res.send(result);
-      }
-    })
-  }
-  module.exports=getBook
+//     BookName.find({ email: frontemail }, (err, result) => {
+//       if (err) {
+//         console.log(err);
+//       }
+//       else {
+//         res.send(result);
+//       }
+//     })
+//   }
+  // module.exports=getBook
+  module.exports=BookName;
