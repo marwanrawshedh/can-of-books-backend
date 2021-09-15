@@ -57,8 +57,8 @@ function update(req,res) {
   const id = req.params.id;
   const {title,description,status} = req.body;
   
-  KittenModel.findByIdAndUpdate(id,{title,description,status},(err,result)=>{
-    KittenModel.find({email:email},(err,result)=>{
+  BookName.findByIdAndUpdate(id,{title,description,status},(err,result)=>{
+    BookName.find({email:email},(err,result)=>{
       if(err)
       {
         console.log(err);
