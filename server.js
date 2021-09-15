@@ -9,7 +9,6 @@ const PORT = process.env.PORT;
 app.use(express.json());
 let BookName = require("./Schema");
 let getBook = require("./Getbook");
-
 // mongoose.connect('mongodb://localhost:27017/test');
 mongoose.connect(process.env.URL);
 app.get("/books", getBook);
@@ -55,7 +54,7 @@ function deleteBooksHandler(req, res) {
 app.put("/updatebooks/:id", update);
 function update(req,res) {
   const id = req.params.id;
-  const {title,description,status} = req.body;
+  const {title,description,status,email} = req.body;
   
   BookName.findByIdAndUpdate(id,{title,description,status},(err,result)=>{
     BookName.find({email:email},(err,result)=>{
